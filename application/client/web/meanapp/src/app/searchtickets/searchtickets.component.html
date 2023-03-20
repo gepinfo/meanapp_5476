@@ -1,0 +1,110 @@
+<h2 class="screen-align">Searchtickets</h2>
+<div id="template-iyn7t" class="gjs-row">
+    <div id="template-inf3l" class="gjs-cell">
+        <img id="template-i9dvt" src="https://grapesjs-images.s3.amazonaws.com/grapesjsimages/Group%2053316.png"
+        </div>
+        <div id="template-isa1r" class="gjs-cell">
+            <div id="template-i2vsk" class="gjs-row">
+                <div id="template-iy54u" class="gjs-cell">
+                    <div id="template-iqypg" class="">Search List of Tickets 
+                        <br id="template-i6o6d" class="">
+                    </div>
+                </div>
+            </div>
+            <div id="template-idrm" class="gjs-row">
+                <div id="template-i29q" class="gjs-cell">
+                    <label id="template-idtp" class="label ">Name</label>
+                    <input id="template-iw07t" [(ngModel)]="tickets.name" [ngModelOptions]="{standalone: true}"
+                    ngDefaultControl class="input form-control " />
+                </div>
+                <div id="template-idxi" class="gjs-cell">
+                    <label id="template-i8fak" class="label ">Description</label>
+                    <input id="template-isqiv" [(ngModel)]="tickets.description"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl class="input form-control "
+                    />
+                </div>
+                <div id="template-iioj6" class="gjs-cell">
+                    <label id="template-i8znd" class="label ">Assignees</label>
+                    <input id="template-ip26w" [(ngModel)]="tickets.assignees"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl class="input form-control "
+                    />
+                </div>
+            </div>
+            <div id="template-i9kq" class="gjs-row">
+                <div id="template-i03j" class="gjs-cell">
+                    <label id="template-iofob" class="label ">Serverity</label>
+                    <div id="template-ilrxi" class=""></div>
+                    <div id="template-iclqi" class="">
+                        <ng-select id="template-iq5pf" name="dynamicdropdown_template-iq5pf" [searchable]="true"
+                        [virtualScroll]="true" [items]="severityitemArray" bindLabel="name" bindValue="name"
+                        [(ngModel)]="tickets.severity" [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        (click)="severityGpGetAllValues()" class="form-control "></ng-select>
+                    </div>
+                </div>
+                <div id="template-i65g" class="gjs-cell">
+                    <label id="template-iwzug" class="label ">Types</label>
+                    <div id="template-iej0b" class=""></div>
+                    <div id="template-i30eo" class="">
+                        <ng-select id="template-ih3kr" name="dynamicdropdown_template-ih3kr" [searchable]="true"
+                        [virtualScroll]="true" [items]="typesitemArray" bindLabel="name" bindValue="name"
+                        [(ngModel)]="tickets.types" [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        (click)="typesGpGetAllValues()" class="form-control "></ng-select>
+                    </div>
+                </div>
+                <div id="template-is29" class="gjs-cell">
+                    <label id="template-ix11w" class="label ">Ticket_status</label>
+                    <select id="template-idpjk" [(ngModel)]="tickets.ticketstatus"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl class="select form-control">
+                        <option value="" id="template-ipf45" class="">Open</option>
+                        <option value="" id="template-i69yz" class="">Close</option>
+                        <option value="" id="template-i8kpq" class="">In-Progress</option>
+                    </select>
+                </div>
+            </div>
+            <div id="template-inw1j" class="gjs-row">
+                <div id="template-intyg" class="gjs-cell">
+                    <div id="template-ibmsi" class="button btn btn-primary ">Search</div>
+                </div>
+            </div>
+            <div name="grid_template-ijpxa" id="template-ijpxa">
+                <ag-grid-angular #agGrid style="width: 100%; height: 100%;" id="myGrid"
+                class="ag-theme-balham" [columnDefs]="columnDefs" [pagination]="true" [paginationPageSize]="paginationPageSize"
+                [defaultColDef]="defaultColDef" [rowData]="rowData" [rowSelection]="rowSelection"
+                (gridReady)="onGridReady($event)" domLayout='autoHeight' (selectionChanged)="onSelectionChanged($event)"></ag-grid-angular>
+            </div>
+            <div id="myGrid" class="ag-theme-alpine "></div>
+        </div>
+    </div>
+    <div id="template-i3lrk" class="">var items = document.querySelectorAll('#template-i51c7'); for (var i =
+        0, len = items.length; i
+        < len; i++) { (function(){ const gridOptions=J
+        SON.parse(
+        '{"entityId":"2f5e1c80-7acb-11ed-966f-4bb05d86924c","default_field":[{"headerName":"Name","field":"a","sortable":true,"colId":"col1_id"},{"headerName":"Description","field":"b","sortable":true,"colId":"col2_id"},{"headerName":"Caller Name","field":"c","sortable":true,"colId":"col3_id"},{"headerName":"Serverity","field":"d","sortable":true,"colId":"col4_id"},{"headerName":"Types","field":"e","sortable":true,"colId":"col5_id"}],"mobileColumn":[],"htmlId":"template-i51c7","componentId":"c2948","custom_field":[{"_id":"639881ccfab9c700195418ce","columnid":"col1_id","columnname":"name","entity":"tickets","entityfield":"name"},{"_id":"639881ccfab9c700195418cd","columnid":"col2_id","columnname":"description","entity":"tickets","entityfield":"description"},{"_id":"639881ccfab9c700195418cc","columnid":"col3_id","columnname":"callername","entity":"tickets","entityfield":"callername"},{"_id":"639881ccfab9c700195418cb","columnid":"col4_id","columnname":"types","entity":"tickets","entityfield":"types"},{"_id":"639881ccfab9c700195418ca","columnid":"col5_id","columnname":"severity","entity":"tickets","entityfield":"severity"}],"event":"OnLoad"}'); const initAgGrid=( )=>{ let columnDefs = []; let rowData = []; if (gridOptions || gridOptions.custom_field.length
+            > 0) { columnDefs = gridOptions.default_field; console.log("Default_field
+            ColumnDefs:", columnDefs); rowData = createRowData(); } else { columnDefs
+            = [{ headerName: 'A', field: 'a', sortable: true, colId: 'col1_id' } ,
+            { headerName: 'B', field: 'b', sortable: true, colId: 'col2_id' } , { headerName:
+            'C', field: 'c', sortable: true, colId: 'col3_id' } , { headerName: 'D',
+            field: 'd', sortable: true, colId: 'col4_id' } , { headerName: 'E', field:
+            'e', sortable: true, colId: 'col5_id' } ]; rowData = createRowData(); }
+            function createRowData() { const tempData = []; for (let i = 0; i
+            < 5; i++)
+            { // create sample row item const rowItem={ // is is simple a: 'aa' + Math.floor(Math.random()
+            * 10000), b: 'bb' + Math.floor(Math.random() * 10000), c: 'cc' + Math.floor(Math.random()
+            * 10000), d: 'dd' + Math.floor(Math.random() * 10000), e: 'ee' + Math.floor(Math.random()
+            * 10000) }; tempData.push(rowItem); } return tempData; } this.gridOptions={
+            defaultColDef: { editable: true } , columnDefs: columnDefs, rowData: rowData,
+            components: { boldRenderer: function (params) { return '<b>' + params.value.name
+            + '</b>'; } } , onGridReady: function (params) { console.log(
+            'rendering params', params.api); params.api.sizeColumnsToFit(); window.addEventListener(
+            'resize', function () { setTimeout(function () { params.api.sizeColumnsToFit();
+            } ); } ); } , paginationPageSize: 5, pagination: true }; const gridDiv=d
+            ocument.querySelector( '#myGrid'); // tslint:disable-next-line:no-unused-expression
+            new agGrid.Grid(gridDiv, this.gridOptions); this.gridOptions.cacheQuickFilter=f
+            alse; console.log( 'grid function api', this.gridOptions.api); this.gridOptions.api.sizeColumnsToFit();
+            }; let exists=f alse; const url='https://unpkg.com/ag-grid-community@26.2.0/dist/ag-grid-community.min.js'
+            ; const scripts=d ocument.getElementsByTagName( 'script'); for (let i=s
+            cripts.length; i--;) { if (scripts[i].src===u rl) { exists=t rue; } } if
+            (exists) { initAgGrid(); } else { const script=d ocument.createElement(
+            'script'); script.onload=i nitAgGrid; script.src=u rl; document.body.appendChild(script);
+            } } .bind(items[i]))(); } </div>

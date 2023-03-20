@@ -1,0 +1,76 @@
+<h2 class="screen-align">Createticket</h2>
+<div id="template-irxy" class="gjs-row">
+    <div id="template-i2kk" class="gjs-cell">
+        <div id="template-ik0yd" class="gjs-row">
+            <div id="template-itkfv" class="gjs-cell">
+                <div id="template-ior8q" class="">Start tracking your Tasks & Issues
+                    <br id="template-ioa1d" class="">
+                </div>
+                <div id="template-iatid" class="">Create new ticket</div>
+            </div>
+        </div>
+    </div>
+    <div id="template-ii59b" class="gjs-cell">
+        <label id="template-igsdy" class="label ">Name
+            <br id="template-igjgl" class="">
+        </label>
+        <input id="template-ih7ta" [(ngModel)]="tickets.name" [ngModelOptions]="{standalone: true}"
+        ngDefaultControl class="input form-control " />
+    </div>
+    <div id="template-ig2i" class="gjs-cell">
+        <label id="template-irzn8" class="label ">Assignees</label>
+        <input id="template-icave" [(ngModel)]="tickets.assignees"
+        [ngModelOptions]="{standalone: true}" ngDefaultControl class="input form-control "
+        />
+    </div>
+    <div id="template-irvh" class="gjs-cell">
+        <label id="template-iprz9" class="label ">Severity</label>
+        <div id="template-ifop6" class=""></div>
+        <div id="template-ihb4j" class="">
+            <ng-select id="template-il4d7" name="dynamicdropdown_template-il4d7" [searchable]="true"
+            [virtualScroll]="true" [items]="severityitemArray" bindLabel="name" bindValue="name"
+            [(ngModel)]="tickets.severity" [ngModelOptions]="{standalone: true}" ngDefaultControl
+            (click)="severityGpGetAllValues()" class="form-control "></ng-select>
+        </div>
+    </div>
+    <div id="template-ijpg" class="gjs-cell">
+        <label id="template-iudhl" class="label ">Types</label>
+        <div id="template-ickkl" class=""></div>
+        <div id="template-ijys3" class="">
+            <ng-select id="template-iz1ef" name="dynamicdropdown_template-iz1ef" [searchable]="true"
+            [virtualScroll]="true" [items]="typesitemArray" bindLabel="name" bindValue="name"
+            [(ngModel)]="tickets.types" [ngModelOptions]="{standalone: true}" ngDefaultControl
+            (click)="typesGpGetAllValues()" class="form-control "></ng-select>
+        </div>
+    </div>
+    <div id="template-i8fws" class="gjs-cell">
+        <label id="template-irkcj" class="label ">Status</label>
+        <div id="template-ivn2p" class=""></div>
+        <select id="template-ihqxa" [(ngModel)]="tickets.ticketstatus" [ngModelOptions]="{standalone: true}"
+        ngDefaultControl class="select form-control">
+            <option value="" id="template-islsf" class="">Open</option>
+            <option value="" id="template-i6mkd" class="">Close</option>
+            <option value="" id="template-igdx2" class="">In-Progress</option>
+        </select>
+    </div>
+    <div id="template-ingz" class="gjs-cell">
+        <label id="template-iu8sw" class="label ">Description</label>
+        <div id="template-ivyg7" class="">
+            <ckeditor id="ckeditorspan" [(ngModel)]="tickets.description" [ngModelOptions]="{standalone: true}"
+            ngDefaultControl [editor]="Editor" [config]="{toolbar:['heading','|','bold','italic','|','bulletedList','numberedList','|','insertTable','|','undo','redo']}"
+            class=""></ckeditor>
+        </div>
+    </div>
+    <div id="template-i0hso" class="gjs-cell">
+        <div id="template-irl6j" class="button btn btn-primary ">Create</div>
+    </div>
+</div>
+<div id="template-inzzg" class="">var items = document.querySelectorAll('#ckeditorspan'); for (var i = 0,
+    len = items.length; i
+    < len; i++) { (function(){ const initCKeditor=f unction
+    () { ClassicEditor.create(document.querySelector( '#ckeditortextarea'),
+    { removePlugins: [ 'ImageUpload', 'MediaEmbed', 'BlockQuote'] } ).then(obj=>{ console.log(obj); } ).catch(error => { console.error(error); } ); };
+        if (typeof ClassicEditor === 'undefined') { const script = document.createElement('script');
+        script.onload = initCKeditor; script.src = 'https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js';
+        document.body.appendChild(script); } else { initCKeditor(); } } .bind(items[i]))();
+        }</div>
